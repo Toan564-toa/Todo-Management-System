@@ -7,6 +7,7 @@ import LoginPage from "./pages/LoginPage";
 import MyProfile from "./pages/MyProfile";
 import TaskManage from "./pages/TaskManage";
 import UserMange from "./pages/UserMange";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="profile" element={<MyProfile />} />
           </Route>
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );
