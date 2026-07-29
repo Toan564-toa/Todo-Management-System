@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import PrivateRoute from "./components/common/PrivateRoute";
+import AdminLayout from "./layouts/AdminLayout";
+import Dashbroad from "./pages/Dashbroad";
+import LoginPage from "./pages/LoginPage";
+import MyProfile from "./pages/MyProfile";
+import TaskManage from "./pages/TaskManage";
+import UserMange from "./pages/UserMange";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+
+        <Route element={<PrivateRoute />}>
+          <Route path="admin" element={<AdminLayout />}>
+            <Route path="" element={<Dashbroad />} />
+            <Route path="user" element={<UserMange />} />
+            <Route path="task" element={<TaskManage />} />
+            <Route path="profile" element={<MyProfile />} />
+          </Route>
+        </Route>
+      </Routes>
     </div>
   );
 }
