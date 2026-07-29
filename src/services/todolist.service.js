@@ -1,9 +1,6 @@
 import { axiosInstance } from "../utils/axios"
 
-export const getToDoLists = (limit) => {
+export const getToDoLists = (limit, skip) => {
     return axiosInstance.get(`/todos/?limit=${limit}`)
 }
 
-export const getUsers = () => {
-    return axiosInstance.get("/users?limit=1")
-}

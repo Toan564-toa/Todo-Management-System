@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { getToDoLists, getUsers } from "../services/todolist.service";
+import { getToDoLists } from "../services/todolist.service";
+import { getUsers } from "../services/user.service";
 
 const useDasrbroad = () => {
   const [data, setData] = useState([]);
@@ -10,7 +11,7 @@ const useDasrbroad = () => {
     const fetchData = async () => {
       try {
         const todoRes = await getToDoLists(254);
-        const userRes = await getUsers();
+        const userRes = await getUsers(1);
         setData(todoRes?.data?.todos || []);
         setTotalUsers(userRes?.data?.total || 0);
       } catch (error) {
